@@ -1,0 +1,16 @@
+{% extends 'AppCoder/base.html' %}
+
+{% load static %}
+
+{% block title %} Crear Curso {% endblock title %}
+
+{% block main %}
+    <h1>Crear Curso</h1>
+    <form action="" method="POST" class="form-curso">
+        {% csrf_token %}
+        <table class="form-table">
+            {{ miFormulario.as_table }}
+        </table>
+        <input type="submit" value="Enviar" class="btn-submit">
+    </form>
+{% endblock main %}

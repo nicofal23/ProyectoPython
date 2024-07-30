@@ -1,0 +1,19 @@
+{% extends 'AppCoder/base.html' %}
+
+{% load static %}
+
+{% block title %} Inicio {% endblock title %}
+
+{% block main %}
+<h1>Crear Curso Comun</h1>
+<form action="" method="POST" action="{% url 'cursos_create_comun' %}">
+    {% csrf_token %}
+    <label for="nombre">curso:</label>
+    <input type="text" name="nombre" id="nombre" required><br>
+    
+    <label for="camada">Comision:</label>
+    <input type="text" name="camada" id="camada" required><br>
+    
+    <input type="submit" value="Enviar">
+</form>
+{% endblock main %}
