@@ -1,16 +1,21 @@
 {% extends 'AppCoder/base.html' %}
-
 {% load static %}
 
 {% block title %} Inicio {% endblock title %}
 
 {% block main %}
+    <h1>Buscar Estudiantes</h1>
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit">Buscar</button>
+    </form>
+    
     <ul>
-        {% for curso in cursos %}
-        <li> {{ estudiante.nombre }} </li>
-        <li> {{ estudiante.edad }} </li>
-        <li> {{ estudiante.apellido }} </li>
-        <li> {{ estudiante.email }} </li>
+        {% for estudiante in estudiantes %}
+        <li>Nombre: {{ estudiante.nombre }}</li>
+        <li>Edad: {{ estudiante.edad }}</li>
+        <li>Apellido: {{ estudiante.apellido }}</li>
+        <li>Email: {{ estudiante.email }}</li>
         {% endfor %}
     </ul>
 {% endblock main %}

@@ -8,6 +8,10 @@ class CursoFormulario(forms.Form):
 class BuscaCursoForm(forms.Form):
     curso = forms.CharField()
 
+class BuscaEstudianteForm(forms.Form):
+    nombre = forms.CharField()
+    apellido = forms.CharField()
+
 class EstudianteFormulario(forms.Form):
     nombre = forms.CharField()
     apellido = forms.CharField()

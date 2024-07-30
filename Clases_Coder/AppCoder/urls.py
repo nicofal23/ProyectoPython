@@ -22,6 +22,7 @@ urlpatterns = [
     path('cursos/create-comun/', views.cursos_create_comun_form, name="cursos_create_comun"),
     path('cursos/create-api/', views.cursos_create_api_form, name="cursos_create_api"),
     path('show_courses/', views.cursos_read_api_form, name="cursos_read"),
+    path('show_estudiante/', views.estudiantes_read_api_form, name='buscar_estudiantes_api'),
     path('estudiantes/create-comun/', views.estudiantes_create_comun_form, name="estudiantes_create_comun"),
     path('estudiantes/create-api/', views.estudiantes_create_api_form, name="estudiantes_create_api"),
     path('profesores/create-comun/', views.profesores_create_comun_form, name="profesores_create_comun"),

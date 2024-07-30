@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Curso, Estudiante, Profesor, Entregable
-from .forms import CursoFormulario, BuscaCursoForm, EstudianteFormulario, ProfesorFormulario, EntregableFormulario
+from .forms import CursoFormulario, BuscaCursoForm, EstudianteFormulario, ProfesorFormulario, EntregableFormulario, BuscaEstudianteForm
 from django.contrib import messages
 
 def inicio(request):
@@ -104,6 +104,26 @@ def cursos_read_api_form(request):
     else:
         miFormulario = BuscaCursoForm()
     return render(request, "AppCoder/read_api_form.html", {"miFormulario": miFormulario})
+
+def estudiantes_read_api_form(request):
+    form = BuscaEstudianteForm(request.GET or None)
+    estudiantes = None
+    
+    if form.is_valid() and (form.cleaned_data.get('nombre') or form.cleaned_data.get('apellido')):
+        nombre = form.cleaned_data.get('nombre')
+        apellido = form.cleaned_data.get('apellido')
+        
+        estudiantes = Estudiante.objects.all()
+        
+        if nombre:
+            estudiantes = estudiantes.filter(nombre__icontains=nombre)
+        if apellido:
+            estudiantes = estudiantes.filter(apellido__icontains=apellido)
+
+    return render(request, 'AppCoder/show_estudiante.html', {
+        'form': form,
+        'estudiantes': estudiantes,
+    })
 
 def profesores_create_comun_form(request):
     if request.method == 'POST':
